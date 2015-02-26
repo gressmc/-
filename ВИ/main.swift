@@ -494,18 +494,18 @@ func talk(){
     request = string
     
     /* Наращиваем счетчик текущего настроения. */
-    
+    var output = "Ответ женского разума:"
     ++memory[mood]
     if memory[mood] > phrase[mood].count {
         if mood == 1 || mood == 2 || mood == 19 {
-            println(memory[mood])
             if memory[mood] > phrase[mood].count {
                 memory[0]++
                 if memory[0] > 2 {
-                    println("Ответ женского разума:" + phrase[0][1])
+                    println(output + phrase[0][1])
                     exit(1)
                 } else {
-                    println("Ответ женского разума:" + phrase[0][0])
+                    println(output + phrase[0][0])
+                    
                 }
                 
             }
@@ -514,8 +514,8 @@ func talk(){
         }
     }
     
-    let output = phrase[mood][Int(arc4random_uniform(UInt32(phrase[mood].count-1)))]
-    println("Ответ женского разума:" + output)
+    output += phrase[mood][Int(arc4random_uniform(UInt32(phrase[mood].count-1)))]
+    println(output)
     print("Ваш вопрос " + nameYou + ":")
     
     if mood == 15 {
